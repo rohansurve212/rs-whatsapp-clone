@@ -20,7 +20,7 @@ const Message = ({ message }) => {
         },
       ]}
     >
-      <Text>{message.text}</Text>
+      <Text style={styles.text}>{message.text}</Text>
       <Text style={styles.time}>{dayjs(message.createdAt).fromNow(true)}</Text>
     </View>
   )
@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
     shadowRadius: 2.22,
 
     elevation: 3,
+  },
+  text: {
+    fontSize: 16,
   },
   time: {
     color: 'gray',
