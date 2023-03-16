@@ -1,5 +1,5 @@
 /** @format */
-
+import { useEffect } from 'react'
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   FlatList,
   KeyboardAvoidingView,
 } from 'react-native'
+import { useRoute, useNavigation } from '@react-navigation/native'
 
 // Import own components
 import Message from '../components/Message'
@@ -16,10 +17,18 @@ import messages from '../../assets/data/messages.json'
 import InputBox from '../components/InputBox'
 
 const ChatScreen = () => {
+  const route = useRoute()
+  const navigation = useNavigation()
+
+  useEffect(() => {
+    navigation.setOptions({ title: route.params.name })
+  }, [route.params.name])
+
   return (
     <KeyboardAvoidingView
       style={styles.bg}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 65 : 90}
     >
       <ImageBackground style={styles.bg} source={bg}>
         <FlatList

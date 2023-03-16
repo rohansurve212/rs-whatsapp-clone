@@ -11,6 +11,7 @@ import chats from '../../assets/data/chats.json'
 const ChatsScreen = () => {
   return (
     <FlatList
+      style={{ backgroundColor: 'white' }}
       data={chats}
       renderItem={({ item }) => <ChatListItem chat={item} />}
     />
